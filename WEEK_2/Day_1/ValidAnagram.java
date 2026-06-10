@@ -1,3 +1,5 @@
+import java.util.HashMap;
+
 class Solution {
 
     static HashMap<Character, Integer> fremap(String st){
