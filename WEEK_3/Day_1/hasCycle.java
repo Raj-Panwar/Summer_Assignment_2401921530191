@@ -1,0 +1,34 @@
+package WEEK_3.Day_1;
+
+class Solution {
+    public boolean hasCycle(ListNode head) {
+        if(head==null){
+            return false;
+        }
+        if(head.next==null){
+            return false;
+        }
+        ListNode fast= head;
+        ListNode slow = head;
+        while(fast!=null){
+            if(slow==null) return false;
+            slow=slow.next;
+            if(fast.next==null) return false;
+            fast=fast.next.next;
+            if(slow==fast){
+                return true;
+            }
+        
+        }
+        return false;
+        
+    }
+}
+class ListNode {
+    int val;
+    ListNode next;
+    ListNode(int x) {
+        val = x;
+        next = null;
+    }
+}
