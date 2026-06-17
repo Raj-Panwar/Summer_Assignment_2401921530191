@@ -1,0 +1,69 @@
+package WEEK_3.Day_3;
+
+import java.util.Stack;
+
+class MinStack {
+    Stack<Long> st = new Stack<>();
+    long min=-1;
+
+
+    public MinStack() {
+
+        
+    }
+    
+    public void push(int val) {
+        long x = (long)val;
+        if(st.size()==0){
+            st.push(x);
+            min=x;
+        }
+        else if(x>=min){
+            st.push(x);
+        }
+        else if(x<min){
+            st.push(2*x-min);
+            min=x;
+        }
+  
+    }
+    
+    public void pop() {
+        if(st.size()==0){
+            return;
+        }
+        else if(st.peek()>=min){
+            st.pop();
+
+        }
+        else if(st.peek()<min){
+            long old = 2*min - st.peek();
+            min = old;
+            st.pop();
+        }
+
+        
+    }
+    
+    public int top() {
+        
+        if(st.size()==0){
+            return -1;
+        }
+        long q = st.peek();
+        if(st.peek()>=min){
+            return (int)q;
+        }
+        if(st.peek()<min){
+            return (int)min;
+        }
+        return 0;
+        
+    }
+    
+    public int getMin() {
+        if(st.size()==0) return -1;
+        return (int)min;
+        
+    }
+}
